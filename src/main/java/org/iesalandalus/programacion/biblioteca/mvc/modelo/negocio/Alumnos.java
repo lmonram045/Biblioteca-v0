@@ -35,7 +35,7 @@ public class Alumnos {
 			i++;
 		}
 
-		return copiaProfundaAlumnos();
+		return alumnosCopia;
 	}
 
 	public void insertar(Alumno alumno) throws OperationNotSupportedException {
@@ -73,7 +73,7 @@ public class Alumnos {
 
 	public Alumno buscar(Alumno alumno) {
 		if (alumno == null)
-			throw new NullPointerException("ERROR: No se puede buscar un alumno nulo.");
+			throw new IllegalArgumentException("ERROR: No se puede buscar un alumno nulo.");
 
 		if (!tamanoSuperado(buscarIndice(alumno))) {
 			return new Alumno(coleccionAlumnos[buscarIndice(alumno)]);
@@ -85,7 +85,7 @@ public class Alumnos {
 
 	public void borrar(Alumno alumno) throws OperationNotSupportedException {
 		if (alumno == null)
-			throw new NullPointerException("ERROR: No se puede borrar un alumno nulo.");
+			throw new IllegalArgumentException("ERROR: No se puede borrar un alumno nulo.");
 
 		if (tamanoSuperado(buscarIndice(alumno)))
 			throw new OperationNotSupportedException("ERROR: No existe ningún alumno con ese correo.");

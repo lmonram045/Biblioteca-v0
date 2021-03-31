@@ -7,8 +7,7 @@ public class Alumno {
 	// Constantes para almacenar las expresiones regulares de nombre y correo
 	static final String ER_NOMBRE = "[a-zA-ZÁÉÍÓÚáéíóú]+[\\s]+[a-zA-ZÁÉÍÓÚáéíóú\\s]*";
 	
-	static final String ER_CORREO = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	static final String ER_CORREO = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";
 
 	// Variables para nombre, correo y curso
 	private String nombre;
