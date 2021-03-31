@@ -1,11 +1,14 @@
 package org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Alumno {
 	// Constantes para almacenar las expresiones regulares de nombre y correo
 	static final String ER_NOMBRE = "[a-zA-ZÁÉÍÓÚáéíóú]+[\\s]+[a-zA-ZÁÉÍÓÚáéíóú\\s]*";
-	// Expresión regular válida para el 99.9% de los emails según la RFC 5322 (el
-	// estándar oficial)
-	static final String ER_CORREO = "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$";
+	
+	static final String ER_CORREO = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	// Variables para nombre, correo y curso
 	private String nombre;
@@ -104,7 +107,7 @@ public class Alumno {
 			throw new NullPointerException("ERROR: El nombre no puede ser nulo.");
 		}
 
-		if (!nombre.matches(ER_NOMBRE)) {
+		if (nombre.trim().length() == 0 || !nombre.matches(ER_NOMBRE)) {
 			throw new IllegalArgumentException("ERROR: El nombre no tiene un formato válido.");
 		}
 
@@ -117,7 +120,13 @@ public class Alumno {
 			throw new NullPointerException("ERROR: El correo no puede ser nulo.");
 		}
 
-		if (!correo.matches(ER_CORREO)) {
+		Pattern pattern = Pattern.compile(ER_CORREO);
+ 
+        
+ 
+        Matcher mather = pattern.matcher(correo);
+ 
+        if (correo.length() == 0 || mather.find() == false) {
 			throw new IllegalArgumentException("ERROR: El formato del correo no es válido.");
 		}
 
