@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Alumno {
 	// Constantes para almacenar las expresiones regulares de nombre y correo
 	static final String ER_NOMBRE = "[a-zA-ZÁÉÍÓÚáéíóú]+[\\s]+[a-zA-ZÁÉÍÓÚáéíóú\\s]*";
-	
+
 	static final String ER_CORREO = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}";
 
 	// Variables para nombre, correo y curso
@@ -120,13 +120,13 @@ public class Alumno {
 		}
 
 		Pattern pattern = Pattern.compile(ER_CORREO);
- 
-        
- 
-        Matcher mather = pattern.matcher(correo);
- 
-        if (correo.length() == 0 || mather.find() == false) {
+
+		Matcher matcher = pattern.matcher(correo);
+
+		if (!matcher.matches()) {
+
 			throw new IllegalArgumentException("ERROR: El formato del correo no es válido.");
+
 		}
 
 		this.correo = correo;
