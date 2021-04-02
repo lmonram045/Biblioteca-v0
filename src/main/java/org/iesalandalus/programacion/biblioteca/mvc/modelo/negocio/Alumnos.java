@@ -42,7 +42,7 @@ public class Alumnos {
 		if (alumno == null)
 			throw new NullPointerException("ERROR: No se puede insertar un alumno nulo.");
 
-		if (capacidad == tamano)
+		if (capacidadSuperada(capacidad))
 			throw new OperationNotSupportedException("ERROR: No se aceptan más alumnos.");
 		
 		if (buscar(alumno) != null)
@@ -56,19 +56,26 @@ public class Alumnos {
 
 	private int buscarIndice(Alumno alumno) {
 		int indice = 0;
-		// Bucle que finaliza si se supera el tamaño o si se encuentra un alumno
-		while (!tamanoSuperado(indice) && (!coleccionAlumnos[indice].getCorreo().equals(alumno.getCorreo()))) {
+		// Recorro el array coleccionAlumnos para compararlo con los alumnos y obtener su indice
+		for (Alumno alumnoDeColeccion : coleccionAlumnos) {
+			if (alumno.equals(alumnoDeColeccion)) {
+				return indice;
+			}
+
 			indice++;
 		}
-		return indice;
+
+
+
+        return indice;
 	}
 
 	private boolean tamanoSuperado(int indice) {
 		return (tamano <= indice);
 	}
 
-	private boolean capacidadSuperada(int indice) {
-		return (tamano <= indice);
+	private boolean capacidadSuperada(int capacidad) {
+		return (tamano >= capacidad);
 	}
 
 	public Alumno buscar(Alumno alumno) {
