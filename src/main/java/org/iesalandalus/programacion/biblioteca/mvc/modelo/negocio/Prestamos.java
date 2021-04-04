@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.biblioteca.mvc.modelo.negocio;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -48,12 +47,15 @@ public class Prestamos {
 	 * alumno.
 	 */
 	public Prestamo[] get(Alumno alumno) {
+		if (alumno == null)
+			throw new NullPointerException("ERROR: El alumno no puede ser nulo.");
+		
 		// Array para guardar salida auxiliar de prestamos
 		Prestamo[] auxiliarPrestamo = new Prestamo[capacidad];
 		// Variable para controlar el array auxiliar creado anteriormente
 		int i = 0;
 		for (Prestamo prestamo : coleccionPrestamos) {
-			if (prestamo.getAlumno().equals(alumno)) {
+			if (prestamo != null && prestamo.getAlumno().equals(alumno)) {
 				auxiliarPrestamo[i] = prestamo;
 				i++;
 			}
@@ -66,12 +68,15 @@ public class Prestamos {
 	 * un libro en concreto.
 	 */
 	public Prestamo[] get(Libro libro) {
+		if (libro == null)
+			throw new NullPointerException("ERROR: El libro no puede ser nulo.");
+		
 		// Array para guardar salida auxiliar de prestamos
 		Prestamo[] auxiliarPrestamo = new Prestamo[capacidad];
 		// Variable para controlar el array auxiliar creado anteriormente
 		int i = 0;
 		for (Prestamo prestamo : coleccionPrestamos) {
-			if (prestamo.getLibro().equals(libro)) {
+			if (prestamo != null && prestamo.getLibro().equals(libro)) {
 				auxiliarPrestamo[i] = prestamo;
 				i++;
 			}
@@ -84,12 +89,15 @@ public class Prestamos {
 	 * concreta
 	 */
 	public Prestamo[] get(LocalDate fecha) {
+		if (fecha == null)
+			throw new NullPointerException("ERROR: La fecha no puede ser nula.");
+		
 		// Array para guardar salida auxiliar de prestamos
 		Prestamo[] auxiliarPrestamo = new Prestamo[capacidad];
 		// Variable para controlar el array auxiliar creado anteriormente
 		int i = 0;
 		for (Prestamo prestamo : coleccionPrestamos) {
-			if (prestamo.getFechaPrestamo().equals(fecha)) {
+			if (prestamo != null && prestamo.getFechaPrestamo().equals(fecha)) {
 				auxiliarPrestamo[i] = prestamo;
 				i++;
 			}
@@ -134,7 +142,7 @@ public class Prestamos {
 		if (!tamanoSuperado(buscarIndice(prestamo)))
 			throw new OperationNotSupportedException("ERROR: Ya existe un préstamo igual.");
 
-		coleccionPrestamos[buscarIndice(prestamo)] = new Prestamo(prestamo);
+		coleccionPrestamos[tamano] = new Prestamo(prestamo);
 		tamano++;
 
 	}
@@ -177,11 +185,12 @@ public class Prestamos {
 	 * @throws OperationNotSupportedException
 	 */
 	public void devolver(Prestamo prestamo, LocalDate fecha) throws OperationNotSupportedException {
-		int indice = buscarIndice(prestamo);
-
+		
 		if (prestamo == null)
 			throw new NullPointerException("ERROR: No se puede devolver un préstamo nulo.");
 
+		int indice = buscarIndice(prestamo);
+		
 		if (tamanoSuperado(indice))
 			throw new OperationNotSupportedException("ERROR: No existe ningún préstamo igual.");
 
@@ -206,11 +215,12 @@ public class Prestamos {
 	 * @throws OperationNotSupportedException
 	 */
 	public void borrar(Prestamo prestamo) throws OperationNotSupportedException {
-		int indice = buscarIndice(prestamo);
-		
+				
 		if (prestamo == null)
 			throw new IllegalArgumentException("ERROR: No se puede borrar un préstamo nulo.");
 
+		int indice = buscarIndice(prestamo);
+		
 		if (tamanoSuperado(indice))
 			throw new OperationNotSupportedException("ERROR: No existe ningún préstamo igual.");
 		
