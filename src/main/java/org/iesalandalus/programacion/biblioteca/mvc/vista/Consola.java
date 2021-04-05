@@ -1,7 +1,6 @@
 package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Alumno;
@@ -17,7 +16,7 @@ public class Consola {
 
 	/** Método para mostrar menú */
 	public static void mostrarMenu() {
-		mostrarCabecera("Gestión de préstamos de la biblioteca")
+		mostrarCabecera("Gestión de préstamos de la biblioteca");
 		for (Opcion opcion : Opcion.values()) {
 			System.out.println("\n" + opcion);
 		}
