@@ -89,6 +89,10 @@ public enum Opcion {
 		
 	}
 	
+	public static boolean esOrdinalValido(int ordinal) {
+		
+	}
+	
 	@Override
 	public String toString() {
 		

@@ -6,8 +6,8 @@ import java.time.temporal.ChronoUnit;
 
 public class Prestamo {
 	// Constantes
-	static final int MAX_DIAS_PRESTAMO = 20;
-	static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private static final int MAX_DIAS_PRESTAMO = 20;
+	public static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	// Variables
 	private LocalDate fechaPrestamo;
