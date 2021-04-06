@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.biblioteca.mvc.vista;
 
+import javax.naming.OperationNotSupportedException;
+
 import org.iesalandalus.programacion.biblioteca.mvc.controlador.Controlador;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Alumno;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Libro;
@@ -43,7 +45,7 @@ public class Vista {
 		try {
 			controlador.insertar(Consola.leerAlumno());
 			System.out.println("El alumno se insertó correctamente.");
-		} catch (NullPointerException | IllegalArgumentException e) {
+		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -68,7 +70,7 @@ public class Vista {
 		try {
 			controlador.borrar(Consola.leerAlumnoFicticio());
 			System.out.println("El alumno se eliminó correctamente");
-		} catch (IllegalArgumentException | NullPointerException e) {
+		} catch (IllegalArgumentException | NullPointerException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -93,7 +95,7 @@ public class Vista {
 		try {
 			controlador.insertar(Consola.leerLibro());
 			System.out.println("El libro se insertó correctamente");
-		} catch (IllegalArgumentException | NullPointerException e) {
+		} catch (IllegalArgumentException | NullPointerException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -118,7 +120,7 @@ public class Vista {
 		try {
 			controlador.borrar(Consola.leerLibroFicticio());
 			System.out.println("El libro se borró correctamente");
-		} catch (IllegalArgumentException | NullPointerException e) {
+		} catch (IllegalArgumentException | NullPointerException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -144,7 +146,7 @@ public class Vista {
 		try {
 			controlador.prestar(Consola.leerPrestamo());
 			System.out.println("Préstamo realizado.");
-		} catch (NullPointerException | IllegalArgumentException e) {
+		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -156,7 +158,7 @@ public class Vista {
 			controlador.devolver(Consola.leerPrestamoFicticio(),
 					Consola.leerFecha("Introduzca la fecha de préstamo: "));
 			System.out.println("Devolución realizada.");
-		} catch (NullPointerException | IllegalArgumentException e) {
+		} catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -179,7 +181,7 @@ public class Vista {
 		try {
 			controlador.borrar(Consola.leerPrestamoFicticio());
 			System.out.println("Préstamo borrado.");
-		} catch (IllegalArgumentException | NullPointerException e) {
+		} catch (IllegalArgumentException | NullPointerException | OperationNotSupportedException e) {
 			System.out.println(e.getMessage());
 		}
 	}
