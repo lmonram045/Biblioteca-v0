@@ -84,7 +84,8 @@ public class Vista {
 			System.out.println("No se encontraron alumnos");
 		} else {
 			for (Alumno alumno : alumnos) {
-				System.out.println(alumno);
+				if (alumno != null)
+					System.out.println(alumno);
 			}
 		}
 	}
