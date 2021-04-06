@@ -32,7 +32,7 @@ public class Consola {
 	public static int elegirOpcion() {
 		int ordinal;
 		do {
-			System.out.print("\nElija una opción");
+			System.out.print("\nElija una opción: ");
 			ordinal = Entrada.entero();
 
 		} while (!Opcion.esOrdinalValido(ordinal));
