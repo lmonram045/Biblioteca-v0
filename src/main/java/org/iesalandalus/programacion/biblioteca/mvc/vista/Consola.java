@@ -16,7 +16,6 @@ public class Consola {
 
 	/** Método para mostrar menú */
 	public static void mostrarMenu() {
-		mostrarCabecera("Gestión de préstamos de la biblioteca");
 		for (Opcion opcion : Opcion.values()) {
 			System.out.println("\n" + opcion);
 		}
