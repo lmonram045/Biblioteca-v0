@@ -52,10 +52,12 @@ public class Modelo {
 	
 	/** Método para realizar una devolución */
 	public void devolver(Prestamo prestamo, LocalDate fecha) throws OperationNotSupportedException {
-		if (prestamos.buscar(prestamo) == null)
-			throw new OperationNotSupportedException("ERROR: No se puede devolver un préstamo no prestado.");
+		Prestamo prestamoAux = prestamos.buscar(prestamo);
 
-		prestamos.devolver(prestamo, fecha);
+		if (prestamoAux == null)
+		   throw new OperationNotSupportedException("ERROR: No se puede devolver un préstamo no prestado.");
+
+		prestamos.devolver(prestamoAux, fecha);
 	}
 	
 	/** Método para buscar un alumno */
